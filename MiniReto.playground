@@ -1,0 +1,33 @@
+//: Playground - noun: a place where people can play
+
+import UIKit
+
+//Se genera un rango de 0 a 100
+var numeros  =  0...100
+
+//ciclo for para iterar los elementos del rango
+for  numero in numeros
+{
+    //sentencia switch
+    switch numero {
+    //regla: “Si el número se encuentra dentro de un rango del 30 al 40, imprime: # el número +  “Viva Swift!!!”
+    case 40...60:
+        print("\(numero) Viva Swift!!!")
+    //Si no esta dentro del rango
+    default:
+        //regla: “Si el número es divisible entre 5, imprime: # el número  + “Bingo!!!”
+        if ((numero % 5) == 0){
+            print("\(numero) Bingo!!!\t")
+        }
+        //regla: “Si el número es par, imprime: # el número + “par!!!”
+        if ((numero % 2) == 0){
+            print("\(numero) par!!!\t")
+        }
+        //regla: “Si el número es impar, imprime: # el número + “impar!!!”
+        if ((numero % 2) == 1){
+            print("\(numero) impar!!!\t")
+        }
+    }
+    
+}
+
