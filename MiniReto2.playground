@@ -1,0 +1,65 @@
+/: Mini reto, Velocimetro
+
+/*
+Enumeracion Velocidades
+*/
+enum Velocidades:Int {
+    case Apagado = 0
+    case VelocidadBaja = 20  //20 km por hora
+    case VelocidadMedia = 50 //50 km por hora
+    case VelocidadAlta = 120 // 120 km por hora
+    
+    //Inicializador de la enumeracion
+    init(velocidadInicial : Velocidades) {
+        self = velocidadInicial
+    }
+}
+
+
+/*
+Clase Auto
+*/
+class Auto {
+    //Atributos
+    var velocidad : Velocidades
+    
+    //Inicializador de la clase
+    init() {
+        self.velocidad = Velocidades(velocidadInicial: .Apagado)
+    }
+    
+    func cambioDeVelocidad( ) -> ( actual : Int, velocidadEnCadena: String){
+        switch ( self.velocidad){
+            //Apagado
+            case .Apagado :
+                //cambia el valor de velocidad a la siguiente velocidad
+                self.velocidad = Velocidades.VelocidadBaja
+                return (Velocidades.Apagado.rawValue,"Apagado")
+            //Velocidad baja
+            case .VelocidadBaja:
+                //cambia el valor de velocidad a la siguiente velocidad
+                self.velocidad = Velocidades.VelocidadMedia
+                return (Velocidades.VelocidadBaja.rawValue,"Velocidad Baja")
+            //Velocidade media
+            case .VelocidadMedia:
+                //cambia el valor de velocidad a la siguiente velocidad
+                self.velocidad = Velocidades.VelocidadAlta
+                return (Velocidades.VelocidadMedia.rawValue,"Velocidad Media")
+            //Velocidad alta
+            case .VelocidadAlta:
+                //si llega a VelocidadAlta cambia a VelocidadMedia
+                self.velocidad = Velocidades.VelocidadMedia
+                return (Velocidades.VelocidadAlta.rawValue,"Velocidad Alta")        }
+        
+    }
+}
+
+
+//Pruebas de la clase:
+var auto = Auto ()
+//20 iteraciones
+for index in 1...20 {
+    var resultado = auto.cambioDeVelocidad()
+    print("\(resultado.actual), \(resultado.velocidadEnCadena) \t")
+}
+
